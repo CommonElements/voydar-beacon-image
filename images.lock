@@ -1,0 +1,4 @@
+# Container images shipped on the Beacon card, pinned by index digest (linux/arm64 is extracted).
+# name  reference (tag for humans, digest is what counts)
+ais-catcher   ghcr.io/jvde-github/ais-catcher:v0.70@sha256:92c049dcec5cd428d834b4f9fd1819aa4d0f2d0b6dbd018b12717588172319ab
+ultrafeeder   ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:latest-build-965@sha256:39d0eb3b2307caaa3653367327aecb4b1ad87f485d6d7713686f12adc75bea7d

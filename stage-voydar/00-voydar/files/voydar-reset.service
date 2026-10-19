@@ -1,0 +1,11 @@
+[Unit]
+Description=Voydar Beacon: re-enable the setup page when /boot/firmware/voydar-reset exists
+ConditionPathExists=/boot/firmware/voydar-reset
+Before=voydar-setup.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/rm -f /etc/voydar/configured /boot/firmware/voydar-reset
+
+[Install]
+WantedBy=multi-user.target

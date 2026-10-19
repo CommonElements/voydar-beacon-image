@@ -1,0 +1,12 @@
+[Unit]
+Description=Voydar Beacon: disk swap safety net on boards with less than 1 GiB RAM (Pi Zero 2 W)
+After=local-fs.target swap.target
+Before=docker.service voydar-preload.service voydar-setup.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/sh /usr/local/lib/voydar/voydar-lowmem-swap.sh
+
+[Install]
+WantedBy=multi-user.target

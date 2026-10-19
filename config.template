@@ -1,0 +1,33 @@
+# pi-gen config for the Voydar Beacon image. build.sh copies this to work/config (and to pi-gen's
+# own config file) and appends FIRST_USER_PASS (random, discarded: stage-voydar locks the account)
+# and IMG_DATE. Do not edit work/config by hand; change this file and rebuild.
+
+IMG_NAME="voydar-beacon"
+PI_GEN_RELEASE="Voydar Beacon"
+RELEASE="trixie"
+DEPLOY_COMPRESSION="xz"
+COMPRESSION_LEVEL=6
+
+TARGET_HOSTNAME="voydar-beacon"
+LOCALE_DEFAULT="en_US.UTF-8"
+KEYBOARD_KEYMAP="us"
+KEYBOARD_LAYOUT="English (US)"
+TIMEZONE_DEFAULT="Etc/UTC"
+
+# One local account, "voydar" (the name the setup page tells contributors to log in with), no usable
+# password (locked in stage-voydar). No first-boot rename prompt, which would take over the HDMI
+# console that shows the hotspot password.
+FIRST_USER_NAME="voydar"
+DISABLE_FIRST_BOOT_USER_RENAME=1
+
+# SSH off. The setup page can turn it on with a password the contributor chooses.
+ENABLE_SSH=0
+
+# The setup page configures the network; cloud-init/netplan would compete with NetworkManager.
+ENABLE_CLOUD_INIT=0
+
+# WPA_COUNTRY deliberately unset: the contributor's country is set by the setup page. Until then
+# the setup hotspot uses 2.4 GHz channel 6, legal in every regulatory domain.
+
+# Lite base (stage0-2) plus our stage. stage2's own "lite" export is skipped by build.sh.
+STAGE_LIST="stage0 stage1 stage2 stage-voydar"

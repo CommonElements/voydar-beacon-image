@@ -1,0 +1,7 @@
+# Build outputs and fetched inputs: never committed (images are published as release assets).
+/work/
+/deploy/
+/stage-voydar/00-voydar/files/build/
+/stage-seadar/00-seadar/files/build/
+/voydar-setup-dry-run/
+**/__pycache__/

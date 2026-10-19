@@ -1,0 +1,24 @@
+# Voydar Beacon: Wi-Fi settings, read when the Beacon starts (optional)
+#
+# Fill this in on your computer before you put the card in the Beacon, and it joins your Wi-Fi
+# by itself: no setup hotspot needed. Then, from a phone or computer on the same Wi-Fi, open
+#   http://voydar-beacon.local/
+# and paste your station key from voydar.com/contribute.
+#
+# Write each value after the = sign, exactly as your phone shows it. Lines starting with # are
+# ignored. Once the Beacon has read this file it empties the values again, so your Wi-Fi
+# password does not stay on the card. Leave everything empty to use the setup hotspot instead.
+
+# Your Wi-Fi name (SSID):
+ssid=
+
+# Your Wi-Fi password (leave empty for an open network):
+password=
+
+# Your 2-letter country code, for example US, GB, NL, DE, AU (sets the legal Wi-Fi channels):
+country=
+
+# Optional: a password of your choice (8 to 63 characters) for the setup hotspot
+# "Voydar-Beacon-XXXX", used only if the Beacon cannot join the Wi-Fi above. Without one the
+# Beacon makes one up and writes it to voydar-hotspot.txt on this card.
+hotspot_password=

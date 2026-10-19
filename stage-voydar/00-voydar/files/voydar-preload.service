@@ -1,0 +1,15 @@
+[Unit]
+Description=Voydar Beacon: load the pinned container images shipped on the card
+ConditionPathExistsGlob=/opt/voydar/images/*.tar
+# Wants, not Requires: the preload restarts docker once and must not be stopped with it.
+Wants=docker.service
+After=docker.service voydar-lowmem-swap.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/local/lib/voydar/voydar-preload.py
+# docker load of ultrafeeder (zstd layers) takes several minutes on a Pi Zero 2 W.
+TimeoutStartSec=45min
+
+[Install]
+WantedBy=multi-user.target

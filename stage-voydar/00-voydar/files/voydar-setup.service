@@ -1,0 +1,17 @@
+[Unit]
+Description=Voydar Beacon first-boot setup page (port 80, only until configured)
+Documentation=https://www.voydar.com/contribute
+# Once setup has finished this unit never starts again. Create /boot/firmware/voydar-reset to re-run it.
+ConditionPathExists=!/etc/voydar/configured
+Wants=NetworkManager.service avahi-daemon.service
+After=NetworkManager.service avahi-daemon.service voydar-reset.service voydar-wifi-import.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/lib/voydar/voydar-setup.py
+Restart=on-failure
+RestartSec=10
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

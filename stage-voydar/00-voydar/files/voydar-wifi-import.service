@@ -1,0 +1,19 @@
+[Unit]
+Description=Voydar Beacon: apply Wi-Fi settings from /boot/firmware/voydar-wifi.txt (then blank them)
+Documentation=https://www.voydar.com/contribute
+# Runs on every boot (also after setup), so a Beacon can be moved to a new Wi-Fi by editing the
+# file on the card. A file holding only the empty template is left alone.
+ConditionPathExists=/boot/firmware/voydar-wifi.txt
+RequiresMountsFor=/boot/firmware
+Wants=NetworkManager.service
+After=NetworkManager.service voydar-reset.service
+Before=voydar-setup.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/local/lib/voydar/voydar-setup.py --import-wifi
+TimeoutStartSec=5min
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
